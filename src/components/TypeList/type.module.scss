@@ -1,0 +1,79 @@
+
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+//显示车型
+:local(.list){
+  width:75%;
+  height: 100%;
+  overflow: auto;
+  background: #fff;
+  position: fixed;
+  top:0;
+  right:-80%;
+  z-index:88;
+  transition: right 1s linear;
+  box-shadow: -4px 3px 3px #efefef;  
+}
+.easeIn{
+  right:0
+}
+
+//列表
+.TypeGroup{
+  width: 100%;
+  height:auto;
+  >h5{
+    width: 100%;
+    height:rem(25px);
+    line-height:rem(25px);
+    background: #F4F4F4;
+    box-sizing: border-box;
+    padding:0 rem(15px);
+    font-size: rem(14px);
+    color:#aaa;
+  }
+  >ul{
+    width: 100%;
+    height:auto;
+    box-sizing: border-box;
+    padding:0 rem(15px);
+    >li{
+      width: 100%;
+      height: rem(70px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #DDDDDD;
+      padding: rem(5px) rem(10px);
+
+    }
+  }
+}
+.typeLi>img{
+  height:rem(50px);
+  // width: rem(100px);
+  margin-right:rem(5px);
+}
+.brandInfo{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height:100%;
+  >span{
+    font-size: rem(16px);
+    color:#5F687A;
+  }
+  >b{
+    margin-top:rem(5px); 
+    font-size: rem(14px);
+    color:#ff0000;
+    font-weight: normal;
+  }
+}

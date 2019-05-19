@@ -1,0 +1,41 @@
+
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+.none{
+  display:none;
+}
+.loadWrap{
+  width: 100%;
+  height:100%;
+  background: #fff;
+  position: fixed;
+  top:0;
+  left:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loadInner{
+  width:rem(110px);
+  height:rem(110px);
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: rem(8px);
+  color:#fff;
+  >img{
+    width:50%;
+    height:50%;
+  }
+  >span{
+    font-size: rem(14px);
+    margin-top:rem(5px);
+  }
+}

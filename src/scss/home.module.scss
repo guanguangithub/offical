@@ -1,0 +1,80 @@
+
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+:global(#root){
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+}
+section{
+  flex:1;
+  overflow: auto;
+}
+.listGroup{
+  width: 100%;
+  height:auto;
+  >h5{
+    width: 100%;
+    height:rem(20px);
+    line-height:rem(20px);
+    background: #F4F4F4;
+    padding:0 rem(15px);
+    font-size: rem(14px);
+    color:#aaa;
+  }
+  >ul{
+    width: 100%;
+    height:auto;
+    padding:0 rem(15px);
+    >li{
+      width: 100%;
+      height: rem(50px);      
+      line-height: rem(50px);      
+      border-bottom: 1px solid #DDDDDD;
+      // padding-bottom: rem(3px);
+    }
+ 
+  }
+}
+
+.brandlogo{
+  height:85%;
+  vertical-align: middle;
+  margin-top: rem(-5px);
+}
+.brandName{
+  height:50%;
+  padding-left:rem(20px);
+  font-size:rem(10px);
+  // transform:scale(0.9);
+  color:#000;
+}
+.brandInfo{
+  height: rem(50px);
+}
+.nav{
+  width:rem(20px);
+  min-height:rem(60px);
+  // background: #e44;
+  position: fixed;
+  top:50% ;
+  right:0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  >span{
+    width:100%;
+    height: rem(18px);
+    line-height: rem(18px);
+    font-size: rem(12px);
+    color:#666666;
+  }
+}
