@@ -15,6 +15,7 @@ class Home extends React.Component{
     this.touchTo = this.touchTo.bind(this)
     this.showCarType = this.showCarType.bind(this)
     this.getTypeList = this.getTypeList.bind(this)
+    this.goDetail = this.goDetail.bind(this)
     this.startY = 0;
     this.moveY = 0;
     this.endY = 0;
@@ -34,7 +35,6 @@ class Home extends React.Component{
     for(let k = 0;k<this.props.brandList.brandList.length;k++){
       this.WordsTop.push(this.navHeight.offsetTop+(k+1)*every)
     }
-console.log(this.WordsTop,'wordsTop')
   }
   render(){
     return (
@@ -42,7 +42,7 @@ console.log(this.WordsTop,'wordsTop')
         <section 
          ref={section=>this.section=section}
         >
-          {console.log(this.props,'...props')}
+          {/* {console.log(this.props,'...props')} */}
          { this.props.brandList.brandList.map(item=>(
             <div className={HomeScss.listGroup} key={item.title}>
               <h5>{item.title}</h5>
@@ -80,6 +80,7 @@ console.log(this.WordsTop,'wordsTop')
         carTypes = {this.props.brandList.carTypes}
         cancel = {this.cancel}
         showCarType = {this.showCarType}
+        goDetail = { this.goDetail }
         />
       </>
     )
@@ -94,9 +95,7 @@ console.log(this.WordsTop,'wordsTop')
   }
   //弹出车型列表
   getTypeList(val){
-    console.log(this.props.brandList.carTypes,'list')
     this.props.brandList.getCarType({MasterID:val})
-    
   }
   //楼层点击事件
   touchTo(title,i){
@@ -109,19 +108,28 @@ console.log(this.WordsTop,'wordsTop')
     // } 
   }
   touchStart(e){
-    console.log(this)
     this.startY = e.touches[0].pageY
-    console.log(this.startY*2,'startY')  
+    // console.log(this.startY*2,'startY')  
   } 
   touchMove(e){
     this.touchMoveY = e.touches[0].pageY
-    console.log(this.touchMoveY,'moveY')  
+    // console.log(this.touchMoveY,'moveY')  
     this.WordsTop.forEach((item,i)=>{
       if(this.touchMoveY>item){}
     })
   } 
   
   //控制侧边栏
- 
+  //跳转汽车详情
+  goDetail(carInfo){
+    let newCarInfo = {
+      AliasName:carInfo.AliasName,
+      carId:carInfo.SerialID,
+      CoverPhoto:carInfo.Picture
+    }
+    window.sessionStorage.setItem('2019.official.carInfo',JSON.stringify(newCarInfo))
+    this.props.history.push(`/car/${carInfo.SerialID}`) 
+  }
+    
 }
 export default Home

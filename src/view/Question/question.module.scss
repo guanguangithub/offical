@@ -1,0 +1,159 @@
+*{
+    box-sizing: border-box;
+}
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+.question{
+    width:100%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 999;
+}
+.header{
+    width: 100%;
+    height: rem(30px);
+    font-size: rem(14px);
+    color:#fff;
+    background: #79CD92;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ques{
+    width: rem(15px);
+    height: rem(15px);
+    line-height: rem(15px);
+    border:rem(1px) solid #fff;
+    text-align: center;
+    border-radius: 50%;
+    font-size: rem(12px);
+    margin-left:rem(5px);
+    >b{
+        font-weight: normal;
+    }
+}
+.section{
+    width: 100%;
+    flex: 1;
+    background: #F4F4F4;
+    overflow: auto;
+}
+.carInfo{
+    width: 100%;
+    height: rem(100px);
+    display: flex;
+    justify-content: space-between;
+    padding:0 rem(5px);   
+    background: #fff;
+}
+.carInfoCon{
+    flex:1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 rem(5px);
+    >dt{
+        width: rem(115px);
+        height: rem(70px);
+        border:1px solid #f3f3f3;
+        border-radius: rem(5px);
+        >img{
+            width: 100%;
+        }
+    }
+    >dd{
+        flex:1;
+        padding-left:rem(10px);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+}
+.carName{
+    font-size: rem(17px);
+    color:#000;
+    margin-bottom: rem(10px);
+}
+.cartype{
+    font-size: rem(16px);
+    color:#4C4C4C;
+}
+.rightIcon{
+    width: 5%;
+    height: rem(100px);
+    line-height: rem(100px);
+    >i{
+        font-size:rem(18px);
+        color:#CCCCCC;
+    }
+}
+
+.personInfo{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    >.infoTitle{
+        width: 100%;
+        height:rem(25px);
+        line-height:rem(25px);
+        font-size:rem(12px);
+        color:#666;
+        background: #EEEEEE;
+        padding:0 rem(10px);
+    }  
+}
+.formUl{
+    width: 100%;
+    height: auto;
+    padding:0 rem(10px);
+    background: #fff;
+    >li{
+        width: 100%;
+        height: rem(44px);
+        border-bottom: 1px solid #F3F3F3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        >span{
+            font-size: rem(15px);
+
+        }
+        >input{
+            flex:1;
+            font-size: rem(15px);
+            text-align: right;
+            padding:0 rem(10px);
+        }
+       
+    }
+}
+.chooseCity>i{
+    font-size: rem(16px);
+    color:#CCC;
+    font-weight: 100;
+}
+.formBtn{
+    width: 100%;
+    height: rem(65px);
+    background: #fff;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    >button{
+        width: 80%;
+        height: rem(35px);
+        font-size: rem(15px);
+        color:#fff;
+        background: #3AACFF;
+        border-radius: rem(5px);
+    }
+}

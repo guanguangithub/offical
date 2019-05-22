@@ -18,7 +18,7 @@ function group(data){
   for (var i in obj) {
       targetArr.push(obj[i])
   }
-  console.log(targetArr)
+//   console.log(targetArr)
   return targetArr
 }
 export default group

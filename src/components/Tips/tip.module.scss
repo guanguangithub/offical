@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box;
+}
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+.wrap{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.1);
+    opacity: 0;
+    transition: all 0.5s linear;
+    z-index: -999;
+}
+.tips{
+    position: absolute;
+    top:rem(40px);
+    left:50%;
+    width: 80%;
+    margin-left:-40%;
+    height: rem(108px);
+    background: #fff;
+    border-radius: rem(8px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s linear 0.5s;
+    z-index: -999;
+    >::after{
+        position: absolute;
+        top:rem(-14px);;
+        right:rem(13px);
+        content: '';
+        width: 0;
+        height: 0;
+        border:rem(8px) solid transparent;
+        border-bottom-color: #fff;
+        display: inline-block;
+
+    }
+    >div.tipImg{
+        flex:1;
+    }
+    >ul{
+        width: 100%;
+        height: rem(42px);
+        padding:rem(5px) 0;
+        background: #F4F4F4;
+        display: flex;
+        flex-direction: column;
+        >li{
+            width: 100%;
+            flex:1;
+            font-size: rem(12px);
+            list-style-type: disc;
+            list-style-position: inside;
+            color:#C0C0C0;
+            padding:0 rem(5px);
+            
+        }
+    }
+}
+.tipImg{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    >dl{
+        flex:1;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        >dt{
+            width:rem(30px);
+            height: rem(30px);
+            >img{
+                width: 100%;
+            }
+        }
+    }
+}
+
+.tipsShow{
+    opacity: 1;
+    z-index: 999;
+    transform: scale(1);
+}

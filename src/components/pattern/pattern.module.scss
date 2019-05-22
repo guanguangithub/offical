@@ -1,0 +1,80 @@
+
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+
+.pattern{
+    width:100%;
+    height:auto;
+    display:flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    >h6{
+        width:100%;
+        height: rem(25px);
+        line-height: rem(35px);
+        font-size: rem(13px);
+        color:#999;
+        box-sizing: border-box;
+        padding: 0 rem(10px);
+        margin-top:rem(-5px);
+    }
+    >dl{
+        width: 100%;
+        height:rem(120px);
+        background: #fff;
+        display:flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        margin-top:rem(5px);
+        dt{
+            width: 100%;
+            flex:1;
+            display:flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            padding:rem(10px);
+            >.patternYear{
+                font-size: rem(14px);
+                color:#3D3D3D;
+            }
+            >.horsepower{
+                font-size: rem(13px);
+                margin:rem(8px) 0;
+                color:#BDBDBD;
+            }
+            >.lowPrice{
+                width: 100%;
+                flex:1;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+        }
+        >dd{
+            width: 100%;
+            height: rem(40px);
+            line-height: rem(40px);
+            border:1px solid #eee;
+            text-align: center;
+            font-size: rem(16px);
+            color:#3AACFF;
+        }
+    }
+}
+.lowPrice{
+    >span{
+        font-size: rem(12px);
+        color:#818181;
+    }
+    >b{
+        font-size: rem(14px);
+        color:#FF2336;
+        margin-left:rem(5px);
+        font-weight: normal;
+    }
+}

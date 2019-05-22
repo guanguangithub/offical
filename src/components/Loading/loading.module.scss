@@ -6,6 +6,9 @@ $browser-default-font-size: 37.5px !default;
 html {
 font-size: browser-default-font-size;
 }
+*{
+  box-sizing: border-box
+}
 .none{
   display:none;
 }

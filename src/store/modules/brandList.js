@@ -43,5 +43,6 @@ export default class HomeState{
  @action showType(){
    this.isShow = true
  }
+ //获取汽车详情内容
 
 }

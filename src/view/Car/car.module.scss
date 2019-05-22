@@ -1,0 +1,128 @@
+
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+.car{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+}
+.carmain{
+    flex:1;
+    background: #F4F4F4;
+    overflow: auto;
+}
+.footer{
+    width: 100%;
+    height:rem(50px);
+    background: #3AACFF;
+    color:#fff;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    >p{
+        font-size: rem(16px);
+        font-weight: 500;
+    }
+    >span{
+        font-size: rem(12px);
+    }
+}
+.curCar{
+    width: 100%;
+    height: auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    >.curCarImg{
+       position: relative;
+       width:100%;
+       height: rem(165px);
+       overflow: hidden;
+       >img{
+           width:100%;
+           margin-top:rem(-40px)
+       }
+       .imgCount{
+           box-sizing: border-box;
+            position: absolute;
+            bottom:rem(10px);
+            right:rem(20px);
+            font-size: rem(12px);
+            padding:rem(2px) rem(8px);
+            border-radius: rem(10px);
+            background:#514D4A;
+            color:#fff;
+            z-index:0;
+        }
+    }
+   
+    .curCarInfo{
+        width: 100%;
+        height: rem(72px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        padding:0 rem(10px);
+        .price{
+            width:50%;
+            height:auto;
+            display:flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+    }
+}
+.price{
+    >span{
+        font-size: rem(18px);
+        color:#FF0000;
+    }
+    >b{
+        font-size: rem(13px);
+        color:#C0C0C0;
+        font-weight: normal;
+    }
+}
+.askPrice{
+    width: 50%;
+    height:rem(35px);
+    color:#fff;
+    font-size: rem(16px);
+    background: #00AFFF;
+    border-radius: rem(5px);
+    font-weight: normal;
+}
+.carType{
+    width:100%;
+    min-height: rem(200px);
+}
+.filterTab{
+    width: 100%;
+    height: rem(40px);
+    box-sizing: border-box;
+    background: #fff;
+    padding:0 rem(10px);
+    margin-top:rem(8px);
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    >span{
+        font-size: rem(16px);
+        color:#000;
+        margin:0 rem(10px)
+    }
+    >span.active{
+        color:#3AACFF;
+    }
+   
+}

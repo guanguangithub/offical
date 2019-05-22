@@ -1,4 +1,4 @@
-import { Home, Car } from '../../view/index.js'
+import { Home, Car, Question } from '../../view/index.js'
 
 const routes = [
   {
@@ -6,8 +6,12 @@ const routes = [
     component:Home
   },
   {
-    path:'/car',
+    path:'/car/:id',
     component:Car
-  }
+  },
+  {
+    path:'/question',
+    component:Question
+  },
 ]
 export default routes
