@@ -174,7 +174,6 @@ class index extends Component {
                 this.setState({
                     curIndex:curInd
                 })
-                console.log(curGroup,'curGroup')
                 this.changePageData(curGroup,curInd,1)
                 this.props.picture.toggleBigImg(type,curInd,curGroup)
                 //swiper.update();

@@ -12,6 +12,7 @@ export default class Picture {
     @observable allNum
     @observable curCount
     @observable curGroup
+    @observable ImageId
     constructor(){
         this.picList = [];
         this.CategoryList = {};
@@ -24,6 +25,7 @@ export default class Picture {
         this.allNum=0;
         this.curCount=1;
         this.curGroup={};
+        this.ImageId = 0;
     }
     //获取分组图片列表
     @action async getPicture(params){
@@ -37,7 +39,7 @@ export default class Picture {
     //获取 当前分类图片内所有图片
     @action  async getCategoryImageList(params){
         const { data } = await getCategoryImageList(params)
-        console.log(data)
+        this.ImageId = params.ImageID
         if(data.code===1&&data.data!=="null"){
             this.CategoryList = data.data
             //显示 列表页
@@ -61,7 +63,6 @@ export default class Picture {
             if(curInd){
                 this.curBigInd = curInd
                 this.curGroup = curGroup
-                console.log(this.curGroup,curInd,'jjjj')
             }
         }
             this.isShowBigImg = type
@@ -72,7 +73,6 @@ export default class Picture {
         const { data } = await getCategoryImageList(params.getInfo)
         if(data.code===1&&data.data!=="null"){
             this.curCount = data.data.Count
-            console.log(this.curBigInd,'data..')
             data.data.List.forEach((item,i)=>{
                 this.swiperItems.push({
                     image:item.Url.replace(/(\{0\})/,item.HighSize),

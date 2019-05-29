@@ -51,7 +51,7 @@ class index extends Component {
                     
                     if(this.activeIndex+1===that.props.picture.swiperItems.length){
                         let SerialID = that.state.SerialID;
-                        let ImageID = that.props.picture.curGroup.Id;
+                        let ImageID = that.props.picture.curGroup.Id || that.props.picture.ImageId;
                         that.props.picture.changePage()
                         let Page = that.props.picture.Page
 
@@ -97,7 +97,7 @@ class index extends Component {
                             }
                             
                         </div>
-                        {/* <div className='swiper-pagination' ref={myPage=>this.myPage = myPage}></div> */}
+                        <div className='swiper-pagination' ref={myPage=>this.myPage = myPage}></div>
                     </div>
                 </div>
                 
