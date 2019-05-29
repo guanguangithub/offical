@@ -22,6 +22,8 @@ font-size: browser-default-font-size;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: url('../../assets/img//骨架图.jpg') no-repeat center center;
+  background-size: 100%;
 }
 .loadInner{
   width:rem(110px);

@@ -1,0 +1,70 @@
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+*{
+  box-sizing: border-box
+}
+
+.imgWrap{
+    position: fixed;
+    top:rem(999px);
+    left:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+    transition: top 0.3s ease-in-out;
+}
+.imgWrapIn{
+  top:0;
+  opacity: 1;
+}
+.ShowDetais{
+  width: 100%;
+  height: 100%;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mySwiper{
+  width: 100%;
+  height: rem(250px);
+}
+.imgfooter{
+  width: 100%;
+  height: rem(30px);
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.page{
+  flex: 1;
+  text-align: center;
+  color:#fff;
+}
+.askLowest{
+  position: absolute;
+  top:0;
+  right:rem(10px);
+  width:rem(80px);
+  height: rem(25px);
+  line-height: rem(25px);
+  text-align: center;
+  background: #3AACFF;
+  font-size: rem(12px);
+  color:#fff;
+  border:0;
+  outline: 0;
+  border-radius: rem(3px);
+}

@@ -2,7 +2,7 @@
  * @Author: Fairy·yue 
  * @Date: 2019-05-21 20:35:38 
  * @Last Modified by: Fairy·yue
- * @Last Modified time: 2019-05-21 20:36:32
+ * @Last Modified time: 2019-05-24 11:34:43
  */
 /**
  * 某个牌子的车的车型列表
@@ -37,7 +37,7 @@ class TypeList extends React.Component{
                     <li key={val.SerialID}
                     onClick = {()=>this.props.goDetail(val)}
                     className={TypeListScss.typeLi}
-                    >
+                    > 
                      <img className={TypeListScss.brandlogo} src={val.Picture} alt=""/>
                      <p className={TypeListScss.brandInfo}>
                       <span>{val.AliasName}</span> 

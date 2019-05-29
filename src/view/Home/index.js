@@ -11,8 +11,7 @@ class Home extends React.Component{
     this.touchStart = this.touchStart.bind(this)
     this.touchMove = this.touchMove.bind(this)
     this.cancel = this.cancel.bind(this)
-    // this.touchEnd = this.touchEnd.bind(this)
-    this.touchTo = this.touchTo.bind(this)
+    this.touchEnd = this.touchEnd.bind(this)
     this.showCarType = this.showCarType.bind(this)
     this.getTypeList = this.getTypeList.bind(this)
     this.goDetail = this.goDetail.bind(this)
@@ -21,20 +20,23 @@ class Home extends React.Component{
     this.endY = 0;
     this.toTop=[0]
     this.WordsTop=[]
-    // console.log(this.height)
-    // this.
+    this.state={
+      ind:0,
+      highLight:false
+    }
   }
   componentDidMount = async()=>{
     await this.props.brandList.getBrandList()
     for(let j=0;j<this.section.children.length;j++){
       this.toTop.push(this.section.children[j].offsetTop);
     }
-    let len = this.props.brandList.brandList.length+1
-    let every = this.navHeight.offsetHeight/len
+    let len = this.props.brandList.brandList.length
+    let every = Math.floor(this.navHeight.offsetHeight*2/len)
     this.WordsTop.push(this.navHeight.offsetTop)
-    for(let k = 0;k<this.props.brandList.brandList.length;k++){
-      this.WordsTop.push(this.navHeight.offsetTop+(k+1)*every)
+    for(let k = 1;k<this.props.brandList.brandList.length;k++){
+      this.WordsTop.push(this.navHeight.offsetTop+k*every)
     }
+    console.log(this.WordsTop,this.navHeight.offsetTop,'wordsTop')
   }
   render(){
     return (
@@ -65,23 +67,32 @@ class Home extends React.Component{
         <div className={HomeScss.nav}
           onTouchStart={this.touchStart}
           onTouchMove={this.touchMove}
-          // onTouchEnd={()=>this.touchEnd()}
+          onTouchEnd={this.touchEnd}
           ref={navHeight=>this.navHeight=navHeight}
         >
-          <span>#</span>
           {this.props.brandList.brandList.map((item,i)=>(
-            <span key={item.title} onTouchEnd={()=>this.touchTo(item.title,i)}>{item.title}</span>
+            <span key={item.title} >{item.title}</span>
           ))}
          </div>
         {this.props.brandList.homeLoad?null:<Loading></Loading>}  
         {/* 车型列表 */}
-       <TypeList 
-        isShow={this.props.brandList.isShow}
-        carTypes = {this.props.brandList.carTypes}
-        cancel = {this.cancel}
-        showCarType = {this.showCarType}
-        goDetail = { this.goDetail }
-        />
+        <TypeList 
+          isShow={this.props.brandList.isShow}
+          carTypes = {this.props.brandList.carTypes}
+          cancel = {this.cancel}
+          showCarType = {this.showCarType}
+          goDetail = { this.goDetail }
+          />
+          {/* 高亮title */}
+         
+          <div className={this.state.highLight?`${HomeScss.highLight} ${HomeScss.highLightIn}` :HomeScss.highLight}>
+            {
+              this.props.brandList.brandList[this.state.ind]?
+              this.props.brandList.brandList[this.state.ind].title
+              :null
+              // console.log(this.props.brandList.brandList[this.ind],this.ind)
+            }
+          </div>
       </>
     )
   }
@@ -97,35 +108,50 @@ class Home extends React.Component{
   getTypeList(val){
     this.props.brandList.getCarType({MasterID:val})
   }
-  //楼层点击事件
-  touchTo(title,i){
-    // console.log(this.moveY,'888888')
-    // for(let k=0;i<this.toTop.length;k++){ 
-    //   if(this.moveY<=this.toTop[k+1]&&this.moveY>=this.toTop[k]){
-          this.section.scrollTop=this.toTop[i+1];
-    //     }
-   
-    // } 
-  }
   touchStart(e){
     this.startY = e.touches[0].pageY
-    // console.log(this.startY*2,'startY')  
+    // console.log(this.startY*2,'startY') 
+    this.setState({
+      highLight:true
+    }) 
+
   } 
   touchMove(e){
     this.touchMoveY = e.touches[0].pageY
-    // console.log(this.touchMoveY,'moveY')  
-    this.WordsTop.forEach((item,i)=>{
-      if(this.touchMoveY>item){}
-    })
+      for(let i=0;i<this.WordsTop.length-1;i++){
+        if(this.touchMoveY*2>this.WordsTop[i]&&this.touchMoveY*2<this.WordsTop[i+1]){
+            // this.ind = i+1    
+            this.setState({
+              ind:i+1
+            })    
+        }
+    }
+    this.section.scrollTop=this.toTop[this.state.ind];
   } 
-  
+  touchEnd(e){
+    for(let i=0;i<this.WordsTop.length-1;i++){
+      if(this.startY*2>this.WordsTop[i]&&this.startY*2<this.WordsTop[i+1]){
+            // this.ind =i+2  
+            this.setState({
+              ind:i+2
+            })    
+        }
+    }
+    this.section.scrollTop=this.toTop[this.state.ind];
+    this.setState({
+      highLight:false
+    })
+  }
   //控制侧边栏
   //跳转汽车详情
   goDetail(carInfo){
+    console.log(carInfo,'carIndo....')
     let newCarInfo = {
       AliasName:carInfo.AliasName,
       carId:carInfo.SerialID,
-      CoverPhoto:carInfo.Picture
+      CoverPhoto:carInfo.Picture,
+      ColorName:'',
+      ColorId:''
     }
     window.sessionStorage.setItem('2019.official.carInfo',JSON.stringify(newCarInfo))
     this.props.history.push(`/car/${carInfo.SerialID}`) 

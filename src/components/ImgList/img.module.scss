@@ -1,0 +1,21 @@
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+*{
+  box-sizing: border-box
+}
+.imgItem{
+    width:rem(122px);
+    height: rem(122px);
+    margin:0 0 rem(5px) rem(3px);
+    overflow: hidden;
+    position: relative;
+    >img{
+        height: 100%;
+    }
+    
+}

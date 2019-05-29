@@ -16,7 +16,7 @@ font-size: browser-default-font-size;
     height: 100%;
     background: rgba(0,0,0,.1);
     opacity: 0;
-    transition: all 0.5s linear;
+    transition: all 0.2s linear;
     z-index: -999;
 }
 .tips{
@@ -32,8 +32,8 @@ font-size: browser-default-font-size;
     flex-direction: column;
     position: relative;
     opacity: 0;
-    transform: scale(0);
-    transition: all 0.5s linear 0.5s;
+    transform: scale(0.3);
+    transition: all 0.3s linear;
     z-index: -999;
     >::after{
         position: absolute;

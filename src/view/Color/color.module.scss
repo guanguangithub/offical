@@ -1,0 +1,79 @@
+*{
+    box-sizing: border-box;
+}
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+.colorWrap{
+    width: 100%;
+    height: 100%;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    width: 100%;
+    height: rem(40px);
+    line-height: rem(40px);
+    text-align: center;
+    color:#00AFFF;
+    background: #fff;
+    font-size: rem(16px);
+    margin:rem(10px) 0 ;
+}
+.yearList{
+    width: 100%;
+    height: rem(40px);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: rem(14px);
+    padding: 0 rem(10px);
+    overflow: auto;
+    margin-bottom: rem(10px);
+    >span{
+        margin-right:rem(20px);
+    }
+    >span.active{
+        color: #00AFFF
+    }
+}
+.colorList{
+    width: 100%;
+    height: auto;
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    >li{
+        width: 50%;
+        height: rem(36px);
+        padding: 0 rem(10px);
+        margin:rem(10px) 0;
+    }
+}
+
+.colorItem{
+    width: 100%;
+    height: 100%;
+    border:1px solid #00AFFF;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 rem(10px);
+    >b{
+        width:rem(20px);
+        height:rem(20px);
+        border:1px solid #333;
+    }
+    >span{
+        color:#111;
+        font-size: rem(16px);
+        margin-left:rem(5px);
+        margin-top:rem(-1px);
+    }
+  }  

@@ -44,6 +44,11 @@ font-size: browser-default-font-size;
     flex: 1;
     background: #F4F4F4;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    >div{
+        flex-shrink: 0;
+    }
 }
 .carInfo{
     width: 100%;
@@ -119,7 +124,7 @@ font-size: browser-default-font-size;
     >li{
         width: 100%;
         height: rem(44px);
-        border-bottom: 1px solid #F3F3F3;
+        border-bottom: 1px solid #ddd;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -136,10 +141,17 @@ font-size: browser-default-font-size;
        
     }
 }
-.chooseCity>i{
+.chooseCity{
+    >i{
     font-size: rem(16px);
     color:#CCC;
     font-weight: 100;
+    }
+    >span{
+        color:#666;
+        font-size: rem(16px);
+        margin-right:rem(3px);
+    }
 }
 .formBtn{
     width: 100%;
@@ -156,4 +168,21 @@ font-size: browser-default-font-size;
         background: #3AACFF;
         border-radius: rem(5px);
     }
+}
+.footer{
+    width: 100%;
+    height: rem(50px);
+    line-height: rem(50px);
+    text-align: center;
+    font-size: rem(16px);
+    color:#fff;
+    background: #3AACFF;
+    transform: scale(0);
+    transition: all 0.5s ease-out;
+}
+.footerIn{
+    transform: scale(1);
+    position:-webkit-sticky;
+    position: sticky;
+    bottom:0;
 }

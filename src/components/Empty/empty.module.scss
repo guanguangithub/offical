@@ -1,0 +1,27 @@
+
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+*{
+  box-sizing: border-box
+}
+.emptyWrap{
+  width: 100%;
+  min-height: rem(400px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: rem(14px);
+  color:#888;
+  
+  >img{
+    // width: 100%;
+    height: 100%;
+    transform: scale(2)
+  }
+}

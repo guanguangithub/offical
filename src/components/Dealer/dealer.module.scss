@@ -1,0 +1,78 @@
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+*{
+  box-sizing: border-box
+}
+.dealer{
+    background: #fff;
+    padding: 0 rem(5px);
+}
+.dealerItem{
+    width: 100%;
+    height: rem(83px);
+    border-bottom: 1px solid #eee;
+    padding: 0 rem(10px);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    .radio{
+        width: 10%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        >span{
+            width:rem(18px);
+            height: rem(18px);
+            border-radius: 50%;
+            border:rem(2px) solid #ddd;
+        }
+        >.yes{
+            border:0;
+            background: url('../../assets/img/yes.png') no-repeat center center;
+            background-size: cover;
+        }
+    }
+    >div{
+        flex:1;
+        height: rem(80px);
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 rem(3px);
+    }
+}
+.dealerName,.dealerRange{
+    width: 100%;
+    height: rem(40px);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    >span:first-child{
+        width: 75%;
+    }
+    >span:last-child{
+        flex:1;
+        text-align: right;
+    }
+}
+.dealerName{
+    font-size: rem(15px);
+    >.price{
+        width:10%;
+        font-size: rem(12px);
+        color:#f11;
+    }
+}
+.dealerRange{
+    flex:1;
+    align-items: flex-start;
+    font-size: rem(13px);
+    color:#a2a2a2;
+}

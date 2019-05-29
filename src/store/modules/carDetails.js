@@ -2,20 +2,26 @@ import { observable, action } from 'mobx'
 import { getCarDetail } from '../../api/home.js'
 import group from '../../utils/group'
 export default class CarDetail {
+    @observable originData
     @observable detailInfo
     @observable years
     constructor(){
-        this.detailInfo = {}
+        this.originData ={}
+        this.detailInfo = {};
         this.isLoaded = true;
         this.years = ['全部'];
+        this.grouplist = []
     }
     @action async getDetailInfo(param){
         const  { data } = await getCarDetail(param)
         // console.log(data,'data...')
         if(data.data){
-            this.isLoaded = false     
-            this.sortData(data.data)
-            this.filterYears(data.data.list)
+            this.isLoaded = false 
+            this.originData = data.data
+            this.detailInfo = data.data
+            console.log(this.originData,'...origindata')
+            this.sortData(this.detailInfo)
+            this.filterYears(this.detailInfo.list)
         }
     } 
   
@@ -28,7 +34,8 @@ export default class CarDetail {
     //通过年份 筛选数据
     @action filterByYear(i){
         // console.log(this.detailInfo,'filter')
-       this.detailInfo.list =  this.detailInfo.list.filter(item=>{
+        let arr = this.originData.list.slice(0);
+       this.detailInfo.list =  arr.filter(item=>{
            if(i===0){
                return true
            }else{
@@ -38,7 +45,8 @@ export default class CarDetail {
         
     }
     @action sortData(data){
-        data.list = data.list.sort((a,b)=>{
+        const arr = data
+        arr.list = arr.list.sort((a,b)=>{
             if(a.exhaust!==b.exhaust){
                 return a.exhaust-b.exhaust
             }else{
@@ -61,7 +69,35 @@ export default class CarDetail {
                 data.list[i+1].hide = true;
             }
         }
-        this.detailInfo = data
 
+        // 分组
+        //list = {
+        //         2018:[
+        //             {key:'',list:''},
+        //             {key:'',list:''},
+        //             {key:'',list:''},
+        //         ]
+        // }
+        // this.years
+        // console.log(new Set(this.years))
+        data.list.forEach(item=>{
+            let key = item.exhaust+'/'+item.max_power+' '+item.inhale_type
+            let year = item.market_attribute.year
+            item.key = key
+            let ind = this.grouplist.findIndex(item=>item.key===key)
+            if(ind===-1){
+                this.grouplist.push({
+                    key:key,
+                    year:year,
+                    list:[item]
+                })
+            }else{
+                this.grouplist[ind].list.push(item)
+            }
+            // let ind = list.findIndex(val=>val[str])
+        })
+        console.log(this.grouplist,'group')
+        console.log(data.list)
+        this.detailInfo = arr
     }
 }

@@ -11,6 +11,90 @@ font-size: browser-default-font-size;
 .city{
     width: 100%;
     height: 100%;
-    // transform: translateY(99);
+    position: fixed;
+    top:rem(9999px);
+    left: 0;
     // background: #e55;
+    background: #fff;
+    transition: top 0.4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+  
+}
+.show{
+  top:0;
+}
+.autoPosition{
+  width: 100%;
+  height: rem(20px);
+  line-height: rem(20px);
+  background: #F4F4F4;
+  font-size: rem(12px);
+  padding:0 rem(10px);
+}
+.autoCity{
+  font-size: rem(14px);
+  padding: 0 rem(15px);
+}
+.autoCity,.cityItem>li{
+  width: 100%;
+  height: rem(40px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cityItem{
+  width: 100%;
+  flex:1;
+  overflow: auto;
+  >li{
+   border-bottom: 1px solid #eee;
+   padding: 0 rem(15px);
+   >span{
+     font-size: rem(14px)
+   }
+   >i{
+     font-size: rem(16px);
+     color:#9F9F9F;
+   }
+  }
+}
+
+//省份列表
+.provinceMask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  right: -100%;
+  background: rgba(0,0,0,.5);
+  transition: right 0.4s linear;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.provinceShow{
+  right:0;
+}
+.left{
+  width: 30%;
+  height: 100%;
+}
+.right{
+  flex:1;
+  height: 100%;
+  overflow: auto;
+  background: #fff;
+  padding:0 rem(5px);
+  >li{
+    width: 100%;
+    height: rem(40px);
+    line-height: rem(40px);
+    border-bottom: 1px solid #eee;
+    padding:0 rem(5px);
+    font-size:rem(14px);
+    color:#111;
+    padding: 0 rem(15px);
+    
+  }
 }

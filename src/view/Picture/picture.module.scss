@@ -1,0 +1,126 @@
+*{
+    box-sizing: border-box;
+}
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+//1.位置属性(position, top, right, z-index, display, float等)
+// 2.大小(width, height, padding, margin)
+// 3.文字系列(font, line-height, letter-spacing, color- text-align等)
+// 4.背景(background, border等)
+// 5.其他(animation, transition等)
+.picWrap{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: #F4F4F4;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: rem(40px);
+    background: #fff;
+    >p{ 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        font-size: rem(14px);
+        padding:rem(3px) rem(20px);
+    
+        >span:first-child{
+            margin-right: rem(8px);
+            text-align: center;
+        }
+    }
+    >p:first-child{
+        border-right: 1px solid #aaa;
+    }
+    
+}
+.carType{
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    -o-text-overflow: ellipsis;
+    white-space:nowrap;
+}
+.icon{
+    display: inline-block;
+    width: rem(20px);
+    height: rem(20px);
+    // background: #e44;
+    transform: rotate(90deg);
+    >i{
+        font-size: rem(16px);
+        color:#ccc;
+    }
+}
+.section{
+    flex:1;
+    width: 100%;
+    margin-top:rem(10px);
+    overflow: auto;
+    // background: #e44;
+}
+.imgList{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}
+
+.imgMask{
+    position: absolute;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: rgba(110,110,140,.4);
+    align-items: center;
+    >span{
+        font-size: rem(13px);
+        color:#fff;
+
+    }
+}
+.none{
+    display: none;
+}
+.categoryWrap{
+    display: none;
+    position: fixed;
+    top:rem(999px);
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transition:top 0.5s linear;
+    overflow: auto;
+}
+.categoryWrapIn{
+    top:0;
+    display: block;
+}
+.showMore{
+    width: 100%;
+    height: rem(30px);
+    line-height: rem(30px);
+    font-size: rem(14px);
+    text-align: center;
+    color:#666;
+    background: #f4f4f4;
+}

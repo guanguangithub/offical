@@ -78,3 +78,23 @@ section{
     color:#666666;
   }
 }
+//高亮 title
+.highLight{
+  position: fixed;
+  top:50%;
+  left:50%;
+  width: rem(100px);
+  height: rem(100px);
+  line-height: rem(90px);
+  text-align: center;
+  border-radius: rem(20px);
+  background: #000;
+  transform: translate(-50%,-50%);
+  font-size: rem(40px);
+  color:#fff;
+  transform: translate(-50%,-50%) scale(0);
+  transition: transform 0.4s linear;
+}
+.highLightIn{
+  transform:translate(-50%,-50%) scale(1);
+}

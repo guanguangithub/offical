@@ -13,6 +13,7 @@ class Car extends React.Component {
     }
     this.handleGoQuestion = this.handleGoQuestion.bind(this)
     this.handletabYears = this.handletabYears.bind(this)
+    this.setInfomation = this.setInfomation.bind(this)
 
   }
   componentDidMount = async()=>{
@@ -20,6 +21,7 @@ class Car extends React.Component {
     await this.props.carDetail.getDetailInfo({
       SerialID:id
     })
+    this.setInfomation(0)
   }
   render(){
     const { detailInfo } = this.props.carDetail
@@ -28,7 +30,9 @@ class Car extends React.Component {
           <section className={CarScss.carmain}>
               {/* 当前车型信息展示 */}
               <div className={CarScss.curCar}>
-                <div className={CarScss.curCarImg}>
+                <div 
+                onClick={()=>this.props.history.push('/picture')}
+                className={CarScss.curCarImg}>
                   <img src={detailInfo.CoverPhoto} alt=""/>
                   <span className={CarScss.imgCount}>{detailInfo.pic_group_count}张照片</span>
                 </div>  
@@ -37,7 +41,7 @@ class Car extends React.Component {
                     <span>{this.props.carDetail.isLoaded?null:this.props.carDetail.detailInfo['market_attribute']['dealer_price']}</span>
                     <b>{this.props.carDetail.isLoaded?null:`指导价 ${this.props.carDetail.detailInfo['market_attribute']['official_refer_price']}`}</b>
                   </p>
-                  <button className={CarScss.askPrice}>询问底价</button>
+                  <button className={CarScss.askPrice} onClick={()=>this.handleGoQuestion(0)}>询问底价</button>
                 </div>
               </div>
               <div className={CarScss.carType}>
@@ -85,13 +89,24 @@ class Car extends React.Component {
     })
     this.props.carDetail.filterByYear(i)
   }
+  //本地存储信息
+  setInfomation(){
+    console.log(this)
+    let groupList = this.props.carDetail.grouplist ;
+    let years = this.props.carDetail.years ;
+    console.log(groupList,'gropss')
+    let list = this.props.carDetail.detailInfo.list;
+    window.sessionStorage.setItem('2019.offical.typeList',JSON.stringify(list))
+    window.sessionStorage.setItem('2019.offical.groupList',JSON.stringify(groupList))
+    window.sessionStorage.setItem('2019.offical.years',JSON.stringify(years))
+
+  }
   //跳转到询价页
   handleGoQuestion(ind){
-    console.log(this)
+    this.setInfomation()
     let list = this.props.carDetail.detailInfo.list;
     let Defid = list[ind].car_id
     window.sessionStorage.setItem('2019.offical.curId',JSON.stringify(Defid))
-    window.sessionStorage.setItem('2019.offical.typeList',JSON.stringify(list))
     this.props.history.push('/question')
   }
 }

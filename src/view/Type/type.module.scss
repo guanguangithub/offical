@@ -1,0 +1,88 @@
+*{
+    box-sizing: border-box;
+}
+$browser-default-font-size: 37.5px !default;
+@function rem($px) {
+@return $px / $browser-default-font-size * 1rem;
+}
+html {
+font-size: browser-default-font-size;
+}
+.wrap{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: #eee;
+    >h5{
+        width: 100%;
+        height:rem(40px);
+        padding:0 rem(10px);
+        background: #fff;
+        color:#666;
+        font-size: rem(14px);
+        display: flex;
+        justify-content:flex-start;
+        align-items: center;
+        overflow: auto;
+        >span{
+            padding: 0 rem(10px)
+        }
+        >span.active{
+            color:#00AFFF;           
+        }
+    }
+}
+.group{
+    width: 100%;
+    height: auto;
+    >.title{
+        width: 100%;
+        height: rem(25px);
+        line-height: rem(25px);
+        padding: 0 rem(10px);
+        color:#555;
+    }
+   
+}
+.list{
+    width: 100%;
+    background: #fff;
+    padding:0 rem(10px);
+  >dl{
+      width: 100%;
+      min-height: rem(63px);
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: rem(8px) 0;
+      dt,dd{
+          width: 100%;
+          display: flex;
+          height: 60%;
+          justify-content: space-between;
+          align-items: center;
+          font-size: rem(15px);   
+      }
+      
+      >dd{
+          flex:1;
+      }
+  }
+}
+.patternYear{
+    width: 70%;
+}
+.price{
+     color: #f11;
+}
+.lowPrice>span{
+    font-size: rem(12px);
+    color:#aaa;
+}
+.officalPrice{
+    font-size: rem(12px);
+    color:#666;
+    font-weight: normal;
+}
