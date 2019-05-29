@@ -97,7 +97,7 @@ class index extends Component {
                             }
                             
                         </div>
-                        <div className='swiper-pagination' ref={myPage=>this.myPage = myPage}></div>
+                        {/* <div className='swiper-pagination' ref={myPage=>this.myPage = myPage}></div> */}
                     </div>
                 </div>
                 
